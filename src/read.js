@@ -10,6 +10,7 @@ export const read = async () => {
     await movementBook.xlsx.readFile(pathMovement);
     await dictionaryBook.xlsx.readFile(pathDictionary);
 
-    movementBook.eachSheet((ws) => console.log(ws.name));
+    // const ws = movementBook.getWorksheet('example');
+
     return { movementBook, dictionaryBook };
 };

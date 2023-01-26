@@ -1,9 +1,7 @@
-// import { read } from './src/read';
+import { read } from './src/read';
 import { getCompanyEngName } from './src/getCompanyEngName';
 import { getCompanyName } from './src/getCompanyName';
 import { createWb } from './src/myCreate';
-
-import { read } from './src/read';
 
 async function app() {
     const { movementBook, dictionaryBook } = await read();
@@ -12,7 +10,9 @@ async function app() {
     const exportStorageWs = movementBook.getWorksheet('export_storage');
     const blIdCell = blWs.getCell('I2');
 
-    // createWb(movementBook, dictionaryBook);
+    createWb(movementBook, dictionaryBook);
+    // blWs.eachRow((row) => row.eachCell((cell) => (cell.formula = null)));
+
     // const companyName = getCompanyName(exportStorageWs, blIdCell);
     // const companyEngName = getCompanyEngName(dictionaryBook, companyName);
     // console.log(companyEngName);
@@ -20,3 +20,7 @@ async function app() {
 }
 
 app();
+
+// blWs.eachRow((row) => row.eachCell((cell) => {
+//     console.log(cell.value);
+// }));
