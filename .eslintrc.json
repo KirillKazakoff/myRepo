@@ -10,7 +10,8 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-alert":"off",
+        "import/prefer-default-export": 0,
+        "no-alert": "off",
         "no-unused-vars": "warn",
         "no-multiple-empty-lines": "warn",
         "indent": [
