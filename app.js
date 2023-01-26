@@ -12,10 +12,11 @@ async function app() {
     const exportStorageWs = movementBook.getWorksheet('export_storage');
     const blIdCell = blWs.getCell('I2');
 
-    const companyName = getCompanyName(exportStorageWs, blIdCell);
-    const companyEngName = getCompanyEngName(dictionaryBook, companyName);
+    // createWb(movementBook, dictionaryBook);
+    // const companyName = getCompanyName(exportStorageWs, blIdCell);
+    // const companyEngName = getCompanyEngName(dictionaryBook, companyName);
     // console.log(companyEngName);
-    createWb(movementBook, dictionaryBook);
+    // createWb(movementBook, dictionaryBook);
 }
 
 app();
