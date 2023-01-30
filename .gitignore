@@ -1,6 +1,7 @@
 dist
 doc
 .idea
+.xlsx
 
 # Logs
 logs

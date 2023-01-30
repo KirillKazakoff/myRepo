@@ -10,7 +10,5 @@ export const read = async () => {
     await movementBook.xlsx.readFile(pathMovement);
     await dictionaryBook.xlsx.readFile(pathDictionary);
 
-    // const ws = movementBook.getWorksheet('example');
-
     return { movementBook, dictionaryBook };
 };
