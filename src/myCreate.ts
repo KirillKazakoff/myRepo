@@ -4,7 +4,7 @@ import { getCompanyEngName } from './getCompanyEngName';
 import { getCompanyName } from './getCompanyName';
 import { initCopy } from './initCopy';
 
-export const createWb = async (movementBook, dictionaryBook) => {
+export const createWb = async (movementBook: any, dictionaryBook: any) => {
     const copy = initCopy(movementBook);
     const blWs = copy.getWorksheet('BL');
     const exportStorageWs = movementBook.getWorksheet('export_storage');
@@ -13,8 +13,8 @@ export const createWb = async (movementBook, dictionaryBook) => {
     const blCompanyNameCell = blWs.getCell('A2');
 
     const blCol = blWs.getColumn('Z');
-    const blArray = [];
-    blCol.eachCell((cell) => {
+    const blArray: string[] = [];
+    blCol.eachCell((cell: any) => {
         const { value } = cell;
 
         if (!value) return;
@@ -25,21 +25,23 @@ export const createWb = async (movementBook, dictionaryBook) => {
         blArray.push(cell.value);
     });
 
-    blWs.eachRow((row) => row.eachCell((cell) => {
-        if (!cell?.value?.result) return;
-        const { result, model } = cell.value;
+    blWs.eachRow((row: any) =>
+        row.eachCell((cell: any) => {
+            if (!cell?.value?.result) return;
+            const { result, model } = cell.value;
 
-        cell.value = result;
+            cell.value = result;
 
-        if (model) {
-            cell.value.model = undefined;
-        }
-    }));
+            if (model) {
+                cell.value.model = undefined;
+            }
+        })
+    );
 
     blArray.forEach((blId) => {
         blIdCell.value = blId;
         const companyName = getCompanyName(exportStorageWs, blIdCell);
         blCompanyNameCell.value = getCompanyEngName(dictionaryBook, companyName);
-        copy.xlsx.writeFile(`${blId}.xlsx`);
+        // copy.xlsx.writeFile(`${blId}.xlsx`);
     });
 };

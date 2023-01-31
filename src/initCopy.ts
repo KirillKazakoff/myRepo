@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
-export const initCopy = (movementBook) => {
+export const initCopy = (movementBook: any) => {
     const copy = _.cloneDeep(movementBook);
-    copy.eachSheet((ws) => {
+    copy.eachSheet((ws: any) => {
         if (ws.name !== 'BL') copy.removeWorksheet(ws.name);
     });
 

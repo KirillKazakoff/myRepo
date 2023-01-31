@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { read } from './src/read';
-import { createWb } from './src/myCreate';
+import { read } from './read';
+import { createWb } from './myCreate';
 
 async function app() {
     const { movementBook, dictionaryBook } = await read();
